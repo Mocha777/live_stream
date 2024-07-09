@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+</head>
+<body>
+    <h1>Live Stream</h1>
+    <video id="video-player" controls autoplay style="width: 100%; max-width: 800px;"></video>
+
+    <script src="https://player.live-video.net/1.5.0/amazon-ivs-player.min.js"></script>
+    <script>
+        (function() {
+            const playURL = "https://fbb5640e162d.us-east-1.playback.live-video.net/api/video/v1/us-east-1.868384598890.channel.wxOE24oScKa2.m3u8"; // 在這裡粘貼你的播放URL
+            const videoPlayer = document.getElementById('video-player');
+
+            if (IVSPlayer.isPlayerSupported) {
+                const player = IVSPlayer.create();
+                player.attachHTMLVideoElement(videoPlayer);
+                player.load(playURL);
+                player.play();
+            } else {
+                console.warn('The current browser does not support the Amazon IVS player.');
+            }
+        })();
+    </script>
+</body>
+</html>
